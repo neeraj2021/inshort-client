@@ -23,11 +23,6 @@ function App() {
   return (
     <Box>
       <Header></Header>
-      <h1>Git Auto deploy testing</h1>
-      <h1>Git Auto deploy testing</h1>
-      <h1>Git Auto deploy testing</h1>
-      <h1>Git Auto deploy testing</h1>
-      <h1>Git Auto deploy testing</h1>
       <Box className={classes.container}>
         <InfoHeader></InfoHeader>
         <Articles></Articles>

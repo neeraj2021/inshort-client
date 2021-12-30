@@ -53,7 +53,7 @@ export default function AddArticle() {
 
   return (
     <>
-      <Typography variant="h4">Add Article</Typography>
+      <Typography variant="h4">Add New Article</Typography>
       <Box component="form" noValidate autoComplete="off" onSubmit={post}>
         <div>
           <TextField
