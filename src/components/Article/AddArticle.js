@@ -34,7 +34,7 @@ export default function AddArticle() {
   const post = async (event) => {
     event.preventDefault();
 
-    const response = await postArticle(article);
+    await postArticle(article);
     setArticle({
       title: "",
       author: "",

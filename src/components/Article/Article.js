@@ -72,7 +72,7 @@ function Article({ article }) {
       <CardContent className={classes.container}>
         <Grid container>
           <Grid lg={5} md={5} sm={5} xs={12} item>
-            <img src={article.url} className={classes.image} />
+            <img src={article.url} alt="pic" className={classes.image} />
           </Grid>
           <Grid
             lg={7}
@@ -91,8 +91,9 @@ function Article({ article }) {
               {article.description}
             </Typography>
             <Typography className={classes.publisher}>
-              read more at{" "}
-              <a href={article.link} target="_blank">
+              read more at
+              <a href={article.link} rel="noreferrer" target="_blank">
+                {" "}
                 {article.publisher}
               </a>
             </Typography>
