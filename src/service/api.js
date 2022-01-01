@@ -23,3 +23,11 @@ export const postArticle = async (article) => {
     console.log(error);
   }
 };
+
+export const fullViewArticle = async (id) => {
+  try {
+    return await axios.get(`${URL}/news/${id}`);
+  } catch (error) {
+    console.log(error);
+  }
+};

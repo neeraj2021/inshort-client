@@ -6,6 +6,7 @@ import {
   makeStyles,
   Grid,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   component: {
@@ -82,7 +83,11 @@ function Article({ article }) {
             item
             className={classes.rightContainer}
           >
-            <Typography className={classes.title}>{article.title}</Typography>
+            <Typography>
+              <Link to={`/${article._id}`} className={classes.title}>
+                {article.title}
+              </Link>
+            </Typography>
             <Typography className={classes.author}>
               <b className={classes.short}>short</b> by {article.author} /{" "}
               {new Date(article.timestamp).toDateString()}
@@ -91,9 +96,8 @@ function Article({ article }) {
               {article.description}
             </Typography>
             <Typography className={classes.publisher}>
-              read more at
+              read more at{" "}
               <a href={article.link} rel="noreferrer" target="_blank">
-                {" "}
                 {article.publisher}
               </a>
             </Typography>

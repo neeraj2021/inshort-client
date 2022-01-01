@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, makeStyles, Typography } from "@material-ui/core";
+import { Box, makeStyles, Typography, Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -8,10 +8,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     height: 48,
-    marginBottom: 30,
+    marginBottom: 10,
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
+  },
+  box: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "10px",
   },
   logo: {
     height: 34,
@@ -25,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 50,
     fontFamily: "'Roboto',sans-serif",
   },
+  button: {
+    margin: "auto",
+  },
 }));
 
 function InfoHeader() {
@@ -35,16 +43,29 @@ function InfoHeader() {
     "https://assets.inshorts.com/website_assets/images/playstore.png";
 
   return (
-    <Box className={classes.container}>
-      <Typography className={classes.text}>
-        For the best experience use <b>inshorts</b> app on your smartphone
-      </Typography>
+    <>
+      <Box className={classes.container}>
+        <Typography className={classes.text}>
+          For the best experience use <b>inshorts</b> app on your smartphone
+        </Typography>
 
-      <Box style={{ marginLeft: "auto" }}>
-        <img src={appleStore} alt="apple store" className={classes.logo} />
-        <img src={googleStore} alt="google store" className={classes.logo} />
+        <Box style={{ marginLeft: "auto" }}>
+          <img src={appleStore} alt="apple store" className={classes.logo} />
+          <img src={googleStore} alt="google store" className={classes.logo} />
+        </Box>
       </Box>
-    </Box>
+      <Box className={classes.box}>
+        <Button
+          href="/add"
+          className={classes.button}
+          color="primary"
+          variant="contained"
+          type="submit"
+        >
+          ADD NEW POST
+        </Button>
+      </Box>
+    </>
   );
 }
 

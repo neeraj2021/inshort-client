@@ -1,43 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { getArticle } from "../../service/api";
 import Article from "./Article";
-import AddArticle from "./AddArticle";
-
+import { CircularProgress, Box } from "@material-ui/core";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 function Articles() {
   const [news, setNews] = useState([]);
   const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [loadmore, SetLoadMore] = useState(false);
 
-  useEffect(() => {
-    const dailyNews = async () => {
-      const response = await getArticle(page);
-      setNews([...news, ...response.data]);
-    };
-    dailyNews();
-  }, [page]);
+  useEffect(async () => {
+    setLoading(true);
+    const response = await getArticle(page);
+    setNews([...news, ...response.data]);
+    setLoading(false);
+  }, []);
 
-  function deleteNews(id) {
-    console.log("id = ", id);
-  }
+  const Load = async () => {
+    SetLoadMore(true);
+    setPage(page + 1);
+    const response = await getArticle(page);
+    setNews([...news, ...response.data]);
+    SetLoadMore(false);
+  };
 
   return (
     <>
-      <AddArticle></AddArticle>
-
-      <InfiniteScroll
-        dataLength={news.length}
-        next={() => setPage((page) => page + 1)}
-        hasMore={true}
-      >
-        {news.map((article, index) => {
-          return (
-            <div key={index} onClick={() => deleteNews(article._id)}>
-              <Article article={article} />
-            </div>
-          );
-        })}
-      </InfiniteScroll>
+      {loading ? (
+        <Box>
+          <CircularProgress />
+        </Box>
+      ) : (
+        <div>
+          <InfiniteScroll dataLength={news.length} next={Load} hasMore={true}>
+            {news.map((article, index) => (
+              <Article article={article} key={index} />
+            ))}
+          </InfiniteScroll>
+          {loadmore ? (
+            <Box>
+              <CircularProgress />
+            </Box>
+          ) : (
+            ""
+          )}
+        </div>
+      )}
     </>
   );
 }

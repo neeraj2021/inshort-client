@@ -1,6 +1,7 @@
 import React from "react";
 import { AppBar, Toolbar, makeStyles } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   header: {
@@ -15,6 +16,9 @@ const useStyles = makeStyles({
     margin: "auto",
     paddingRight: 70,
   },
+  link: {
+    margin: "auto",
+  },
 });
 
 function Header() {
@@ -26,7 +30,9 @@ function Header() {
     <AppBar className={classes.header}>
       <Toolbar>
         <Menu className={classes.menu} />
-        <img src={url} alt="logo" className={classes.image} />
+        <Link to="/" className={classes.link}>
+          <img src={url} alt="logo" className={classes.image} />
+        </Link>
       </Toolbar>
     </AppBar>
   );
